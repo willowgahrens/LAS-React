@@ -70,8 +70,6 @@ export function AuthorPage() {
         <TopBar reportTitle={reportTitle} />
 
         <Box sx={{ flex: 1, display: 'flex', minHeight: 0 }}>
-          <SecondarySidebar activeTool={activeTool} onToolChange={setActiveTool} />
-
           {activeTool !== 'bundle' ? (
             <Box
               sx={{
@@ -79,7 +77,7 @@ export function AuthorPage() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                bgcolor: 'las.panelGray',
+                bgcolor: 'white',
               }}
             >
               <Alert severity="info" sx={{ maxWidth: 400 }}>
@@ -108,6 +106,8 @@ export function AuthorPage() {
               onRemoveEndnote={(id) => setEndnotes((prev) => prev.filter((n) => n.id !== id))}
             />
           )}
+
+          <SecondarySidebar activeTool={activeTool} onToolChange={setActiveTool} />
 
           {showBundlePanel && (
             <BundlePanel
