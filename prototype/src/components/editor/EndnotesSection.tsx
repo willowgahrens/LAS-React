@@ -18,7 +18,7 @@ interface EndnotesSectionProps {
 
 export function EndnotesSection({ endnotes, expanded, onToggle, onAdd, onRemove }: EndnotesSectionProps) {
   return (
-    <Box sx={{ px: 2, pb: 2 }}>
+    <Box sx={{ px: 2, pt: 2, pb: 2 }}>
       <Box
         sx={{
           border: '1px solid #bababa',

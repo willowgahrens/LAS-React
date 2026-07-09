@@ -1,5 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Autocomplete, Box, TextField, Typography } from '@mui/material'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import { Autocomplete, Box, Breadcrumbs, Link, TextField, Typography } from '@mui/material'
 import { ClassificationBar } from './ClassificationBar'
 import { EditorToolbar } from './EditorToolbar'
 import { EndnotesSection } from './EndnotesSection'
@@ -50,8 +51,44 @@ export function ReportEditor({
   const wordCount = body.trim() ? body.trim().split(/\s+/).length : 0
 
   return (
-    <Box sx={{ flex: 1, overflow: 'auto', bgcolor: 'white', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ flex: 1, minHeight: 0, overflow: 'auto', bgcolor: 'white', display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ px: 3, pt: 2, pb: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
+          <Box
+            sx={{
+              bgcolor: '#444',
+              borderRadius: '0 4px 4px 0',
+              width: 18,
+              height: 36,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            <KeyboardArrowUpIcon sx={{ color: 'white', fontSize: 20, transform: 'rotate(90deg)' }} />
+          </Box>
+          <Breadcrumbs
+            separator="/"
+            sx={{
+              '& .MuiBreadcrumbs-separator': { color: '#373737', mx: 0.25, fontSize: 12 },
+              '& .MuiTypography-root': {
+                fontSize: 12,
+                fontFamily: '"Source Sans Pro", sans-serif',
+                lineHeight: 1.4,
+              },
+            }}
+          >
+            <Link href="#" underline="always" sx={{ color: 'las.breadcrumbLink', fontSize: 12 }}>
+              Author
+            </Link>
+            <Link href="#" underline="always" sx={{ color: 'las.breadcrumbLink', fontSize: 12 }}>
+              Draft
+            </Link>
+            <Typography sx={{ color: '#373737', fontSize: 12 }}>{reportTitle}</Typography>
+          </Breadcrumbs>
+        </Box>
+
         <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
           <Autocomplete
             fullWidth
@@ -84,10 +121,9 @@ export function ReportEditor({
           border: '1px solid #d1d1d1',
           borderRadius: '20px',
           overflow: 'hidden',
-          flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          minHeight: 500,
+          flexShrink: 0,
         }}
       >
         <ClassificationBar chips={chips} onRemoveChip={onRemoveChip} />
@@ -123,7 +159,7 @@ export function ReportEditor({
 
         <EditorToolbar />
 
-        <Box sx={{ flex: 1, position: 'relative', bgcolor: 'white', mx: 0 }}>
+        <Box sx={{ position: 'relative', bgcolor: 'white', mx: 0 }}>
           <TextField
             multiline
             fullWidth

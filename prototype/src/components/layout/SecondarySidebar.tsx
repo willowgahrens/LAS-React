@@ -29,14 +29,14 @@ export function SecondarySidebar({ activeTool, onToolChange }: SecondarySidebarP
   return (
     <Box
       sx={{
-        width: 109,
-        minWidth: 109,
+        width: 85,
+        minWidth: 85,
         bgcolor: 'las.sidebarDark',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        py: 3,
-        gap: 3,
+        py: 2,
+        gap: 2.5,
       }}
     >
       {tools.map((tool) => {
@@ -54,21 +54,22 @@ export function SecondarySidebar({ activeTool, onToolChange }: SecondarySidebarP
               gap: 0.5,
               cursor: 'pointer',
               width: '100%',
-              py: isBundle && isActive ? 1.5 : 0,
+              py: isBundle && isActive ? 1 : 0,
               bgcolor: isBundle && isActive ? 'las.panelGray' : 'transparent',
               transition: 'background-color 0.2s',
               '&:hover': { opacity: 0.85 },
             }}
           >
-            <tool.icon sx={{ color: isBundle && isActive ? '#333' : 'white', fontSize: 32 }} />
+            <tool.icon sx={{ color: isBundle && isActive ? '#333' : 'white', fontSize: 24 }} />
             <Typography
               variant="caption"
               sx={{
                 color: isBundle && isActive ? '#333' : 'white',
-                fontSize: 10,
-                letterSpacing: 0.4,
+                fontSize: 9,
+                letterSpacing: 0.3,
                 textAlign: 'center',
-                px: 0.5,
+                px: 0.25,
+                lineHeight: 1.2,
               }}
             >
               {tool.label}

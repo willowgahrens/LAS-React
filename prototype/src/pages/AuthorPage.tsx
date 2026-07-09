@@ -67,7 +67,7 @@ export function AuthorPage() {
       <PrimarySidebar />
 
       <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-        <TopBar reportTitle={reportTitle} />
+        <TopBar />
 
         <Box sx={{ flex: 1, display: 'flex', minHeight: 0 }}>
           {activeTool !== 'bundle' ? (

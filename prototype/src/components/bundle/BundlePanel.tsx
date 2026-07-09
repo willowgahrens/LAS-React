@@ -6,8 +6,52 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import ToggleOffIcon from '@mui/icons-material/ToggleOff'
 import { Autocomplete, Box, Button, Chip, Link, TextField, Typography } from '@mui/material'
+import type { AutocompleteRenderInputParams } from '@mui/material/Autocomplete'
 import type { BundleItem } from '../../types'
 import { reportTypeOptions } from '../../data/mockData'
+
+const classChipSx = {
+  bgcolor: '#d9d9d9',
+  height: 25,
+  fontSize: 13,
+  flexShrink: 0,
+  mr: 1,
+}
+
+function renderInputWithClassChip(
+  params: AutocompleteRenderInputParams,
+  label: string,
+  options?: { showLock?: boolean },
+) {
+  const inputSlot = params.slotProps?.input ?? {}
+
+  return (
+    <TextField
+      {...params}
+      label={label}
+      slotProps={{
+        ...params.slotProps,
+        input: {
+          ...inputSlot,
+          startAdornment: (
+            <>
+              <Chip label="(CLASS)" size="small" sx={classChipSx} />
+              {inputSlot.startAdornment}
+            </>
+          ),
+          endAdornment: options?.showLock ? (
+            <>
+              <LockOutlinedIcon sx={{ fontSize: 18, color: 'action.active', mr: 0.5 }} />
+              {inputSlot.endAdornment}
+            </>
+          ) : (
+            inputSlot.endAdornment
+          ),
+        },
+      }}
+    />
+  )
+}
 
 interface BundlePanelProps {
   bundles: BundleItem[]
@@ -189,22 +233,14 @@ export function BundlePanel({
             <Chip label="BUNDLE" size="small" sx={{ bgcolor: '#333', color: 'white', borderRadius: '5px', mb: 2 }} />
 
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-              <Box sx={{ position: 'relative' }}>
-                <Autocomplete
-                  fullWidth
-                  options={['Egram']}
-                  value={draftTitle}
-                  onChange={(_, v) => onDraftTitleChange(v ?? '')}
-                  renderInput={(params) => <TextField {...params} label="Bundle Title" />}
-                  disableClearable
-                />
-                <Chip
-                  label="(CLASS)"
-                  size="small"
-                  sx={{ position: 'absolute', left: 12, top: 10, bgcolor: '#d9d9d9', height: 25, fontSize: 13 }}
-                />
-                <LockOutlinedIcon sx={{ position: 'absolute', right: 48, top: 14, fontSize: 18, color: 'action.active' }} />
-              </Box>
+              <Autocomplete
+                fullWidth
+                options={['Egram']}
+                value={draftTitle}
+                onChange={(_, v) => onDraftTitleChange(v ?? '')}
+                renderInput={(params) => renderInputWithClassChip(params, 'Bundle Title', { showLock: true })}
+                disableClearable
+              />
 
               <Autocomplete
                 fullWidth
@@ -224,21 +260,14 @@ export function BundlePanel({
                 disableClearable
               />
 
-              <Box sx={{ position: 'relative' }}>
-                <Autocomplete
-                  fullWidth
-                  options={['Harry Potter Went To Hogwarts Versi..']}
-                  value={draftReportTitle}
-                  onChange={(_, v) => onDraftReportTitleChange(v ?? '')}
-                  renderInput={(params) => <TextField {...params} label="Report Title" />}
-                  disableClearable
-                />
-                <Chip
-                  label="(CLASS)"
-                  size="small"
-                  sx={{ position: 'absolute', left: 12, top: 10, bgcolor: '#d9d9d9', height: 25, fontSize: 13 }}
-                />
-              </Box>
+              <Autocomplete
+                fullWidth
+                options={['Harry Potter Went To Hogwarts Versi..']}
+                value={draftReportTitle}
+                onChange={(_, v) => onDraftReportTitleChange(v ?? '')}
+                renderInput={(params) => renderInputWithClassChip(params, 'Report Title')}
+                disableClearable
+              />
 
               <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, mt: 1 }}>
                 <Button variant="outlined" onClick={onCancelDraft} sx={{ color: 'las.chipBlack', borderColor: 'las.chipBlack' }}>
