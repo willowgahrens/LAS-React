@@ -1,6 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close'
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined'
-import { Avatar, Box, Chip, Typography } from '@mui/material'
+import { Avatar, Box, IconButton, Typography } from '@mui/material'
 import type { ClassificationChip } from '../../types'
 
 interface ClassificationBarProps {
@@ -14,13 +14,16 @@ export function ClassificationBar({ chips, onRemoveChip }: ClassificationBarProp
       <Box
         sx={{
           bgcolor: 'las.classificationGreen',
-          borderRadius: '0 0 10px 10px',
+          borderRadius: '0 0 5px 5px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           gap: 1.5,
           py: 1.25,
-          mx: 0,
+          pl: 2.5,
+          pr: 2.5,
+          width: '50%',
+          mx: 'auto',
         }}
       >
         <Typography variant="body2" sx={{ color: 'white' }}>
@@ -65,29 +68,42 @@ export function ClassificationBar({ chips, onRemoveChip }: ClassificationBarProp
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
           {chips.map((chip) => (
-            <Box key={chip.id} sx={{ display: 'flex', alignItems: 'center' }}>
-              <Chip
-                label={
-                  <Box>
-                    <Typography component="span" sx={{ fontSize: 10, opacity: 0.54, display: 'block', lineHeight: 1, pt: '5px' }}>
-                      CLASS
-                    </Typography>
-                    <Typography component="span" sx={{ fontSize: 10, fontWeight: 500, lineHeight: 1 }}>
-                      {chip.label}
-                    </Typography>
-                  </Box>
-                }
-                onDelete={() => onRemoveChip(chip.id)}
-                deleteIcon={<CloseIcon sx={{ fontSize: 14, color: chip.textColor ?? 'white' }} />}
+            <Box
+              key={chip.id}
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'flex-start',
+                bgcolor: chip.color,
+                color: chip.textColor ?? 'white',
+                borderRadius: '5px',
+                px: 1.25,
+                py: 0.25,
+                minHeight: 30,
+                gap: 0.25,
+              }}
+            >
+              <Box>
+                <Typography component="span" sx={{ fontSize: 10, opacity: 0.54, display: 'block', lineHeight: 1, pt: '5px' }}>
+                  CLASS
+                </Typography>
+                <Typography component="span" sx={{ fontSize: 10, fontWeight: 500, lineHeight: 1, display: 'block' }}>
+                  {chip.label}
+                </Typography>
+              </Box>
+              <IconButton
+                size="small"
+                onClick={() => onRemoveChip(chip.id)}
                 sx={{
-                  bgcolor: chip.color,
+                  p: 0,
+                  mt: '5px',
+                  width: 12,
+                  height: 12,
                   color: chip.textColor ?? 'white',
-                  height: 'auto',
-                  minHeight: 30,
-                  borderRadius: '5px',
-                  '& .MuiChip-label': { px: 1.25 },
+                  '&:hover': { bgcolor: 'rgba(255,255,255,0.15)' },
                 }}
-              />
+              >
+                <CloseIcon sx={{ fontSize: 12 }} />
+              </IconButton>
             </Box>
           ))}
 

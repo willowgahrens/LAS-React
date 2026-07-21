@@ -20,8 +20,8 @@ export function PrimarySidebar() {
         borderRight: '1px solid #222',
       }}
     >
-      <Box sx={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', bgcolor: '#222' }}>
-        <AppsOutlinedIcon sx={{ color: 'white', fontSize: 36 }} />
+      <Box sx={{ height: 60, minHeight: 60, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', bgcolor: '#222', flexShrink: 0 }}>
+        <AppsOutlinedIcon sx={{ color: 'white', fontSize: 28 }} />
       </Box>
 
       <Box sx={{ flex: 1, width: '100%', bgcolor: 'las.sidebarLavender', pt: 2 }}>

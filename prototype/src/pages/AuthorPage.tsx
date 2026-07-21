@@ -31,7 +31,7 @@ export function AuthorPage() {
   const [draftTitle, setDraftTitle] = useState('Egram')
   const [draftReportType, setDraftReportType] = useState('Egram')
   const [draftClassification, setDraftClassification] = useState('CLASSIFICATION')
-  const [draftReportTitle, setDraftReportTitle] = useState('Harry Potter Went To Hogwarts Versi..')
+  const [draftReportTitle, setDraftReportTitle] = useState('Anticipated Discussions at Behrainabad-Zendia Peace Talks')
   const [snackbar, setSnackbar] = useState<string | null>(null)
 
   const reportTitle = 'Harry Potter Went to Hogwarts'

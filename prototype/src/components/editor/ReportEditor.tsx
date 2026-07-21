@@ -1,5 +1,4 @@
 import CloseIcon from '@mui/icons-material/Close'
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Autocomplete, Box, Breadcrumbs, Link, TextField, Typography } from '@mui/material'
 import { ClassificationBar } from './ClassificationBar'
 import { EditorToolbar } from './EditorToolbar'
@@ -53,21 +52,7 @@ export function ReportEditor({
   return (
     <Box sx={{ flex: 1, minHeight: 0, overflow: 'auto', bgcolor: 'white', display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ px: 3, pt: 2, pb: 1 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1.5 }}>
-          <Box
-            sx={{
-              bgcolor: '#444',
-              borderRadius: '0 4px 4px 0',
-              width: 18,
-              height: 36,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}
-          >
-            <KeyboardArrowUpIcon sx={{ color: 'white', fontSize: 20, transform: 'rotate(90deg)' }} />
-          </Box>
+        <Box sx={{ mb: 1.5 }}>
           <Breadcrumbs
             separator="/"
             sx={{
@@ -119,7 +104,7 @@ export function ReportEditor({
           mb: 2,
           bgcolor: 'las.panelGray',
           border: '1px solid #d1d1d1',
-          borderRadius: '20px',
+          borderRadius: '5px',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',

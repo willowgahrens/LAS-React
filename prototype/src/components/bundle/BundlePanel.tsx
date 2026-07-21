@@ -175,7 +175,7 @@ export function BundlePanel({
         overflow: 'hidden',
       }}
     >
-      <Box sx={{ px: 2.5, pt: 2, pb: 1, borderBottom: '1px solid #d1d1d1' }}>
+      <Box sx={{ px: 2.5, pt: 2, pb: 2.5, borderBottom: '1px solid #d1d1d1' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
           <Typography variant="body1" sx={{ fontWeight: 500, color: '#333' }}>
             BUNDLE
@@ -193,7 +193,7 @@ export function BundlePanel({
             <FilterAltOutlinedIcon sx={{ color: 'action.active' }} />
           </Box>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', pb: 1 }}>
           <Button variant="contained" color="primary" onClick={onAddDraft}>
             ADD DRAFT
           </Button>
@@ -262,7 +262,7 @@ export function BundlePanel({
 
               <Autocomplete
                 fullWidth
-                options={['Harry Potter Went To Hogwarts Versi..']}
+                options={['Anticipated Discussions at Behrainabad-Zendia Peace Talks']}
                 value={draftReportTitle}
                 onChange={(_, v) => onDraftReportTitleChange(v ?? '')}
                 renderInput={(params) => renderInputWithClassChip(params, 'Report Title')}
